@@ -35,7 +35,7 @@ public class Resolver {
 		if let string = String(cString: buffer, encoding: .utf8) {
 			result = string
 		}
-		buffer.deallocate(capacity: Int(_POSIX_HOST_NAME_MAX))
+		buffer.deallocate()
 		return result
 	}
 
