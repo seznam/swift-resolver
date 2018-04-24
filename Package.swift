@@ -13,5 +13,6 @@ let package = Package(
 	],
 	targets: [
 		.target(name: "Resolver", dependencies: ["UniSocket", "DNS"])
-	]
+	],
+	swiftLanguageVersions: [4]
 )
