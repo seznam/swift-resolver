@@ -12,7 +12,8 @@ let package = Package(
 		.package(url: "git@gitlab.kancelar.seznam.cz:pvs/swift-dns", from: "1.0.0")
 	],
 	targets: [
-		.target(name: "Resolver", dependencies: ["UniSocket", "DNS"])
+		.target(name: "Resolver", dependencies: ["UniSocket", "DNS"]),
+		.testTarget(name: "ResolverTests", dependencies: ["Resolver"])
 	],
 	swiftLanguageVersions: [4]
 )
