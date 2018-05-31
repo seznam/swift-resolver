@@ -1,4 +1,11 @@
 import Foundation
+#if os(macOS) || os(iOS) || os(tvOS)
+import Darwin
+private let gethostname = Darwin.gethostname
+#elseif os(Linux)
+import Glibc
+private let gethostname = Glibc.gethostname
+#endif
 import UniSocket
 import DNS
 
@@ -30,7 +37,7 @@ public class Resolver {
 
 	public class func getHostname() -> String? {
 		let buffer = UnsafeMutablePointer<Int8>.allocate(capacity: Int(_POSIX_HOST_NAME_MAX))
-		_ = Glibc.gethostname(buffer, Int(_POSIX_HOST_NAME_MAX))
+		_ = gethostname(buffer, Int(_POSIX_HOST_NAME_MAX))
 		var result: String?
 		if let string = String(cString: buffer, encoding: .utf8) {
 			result = string
