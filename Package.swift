@@ -8,8 +8,8 @@ let package = Package(
 		.library(name: "Resolver", targets: ["Resolver"])
 	],
 	dependencies: [
-		.package(url: "git@gitlab.kancelar.seznam.cz:pvs/swift-unisocket", from: "0.12.0"),
-		.package(url: "git@gitlab.kancelar.seznam.cz:pvs/swift-dns", from: "1.0.0")
+		.package(url: "https://github.com/seznam/swift-unisocket", from: "0.13.1"),
+		.package(url: "https://github.com/Bouke/DNS.git", from: "1.0.0")
 	],
 	targets: [
 		.target(name: "Resolver", dependencies: ["UniSocket", "DNS"]),
