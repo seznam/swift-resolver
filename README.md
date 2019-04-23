@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat)
+![](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
 ![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
