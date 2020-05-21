@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/Swift-4.2-orange.svg?style=flat)
+![](https://img.shields.io/badge/Swift-5.2-orange.svg?style=flat)
 ![macOS](https://img.shields.io/badge/os-macOS-green.svg?style=flat)
 ![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
 ![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
@@ -66,4 +66,4 @@ do {
 
 ## Credits
 
-Written by [Daniel Bilik](https://github.com/ddbilik/), copyright [Seznam.cz](https://onas.seznam.cz/en/), licensed under the terms of the Apache License 2.0.
+Written by [Daniel Fojt](https://github.com/danielfojt/), copyright [Seznam.cz](https://onas.seznam.cz/en/), licensed under the terms of the Apache License 2.0.
