@@ -109,6 +109,8 @@ public class Resolver {
 	private func query(_ name: String, type: ResourceRecordType = .host, timeout: UInt? = nil) throws -> [ResourceRecord] {
 		let tmout = UniSocketTimeout(connect: timeout ?? self.timeout, read: timeout ?? self.timeout, write: timeout ?? self.timeout)
 		var nameserver = self.nameserver
+        var ipNameserver: String
+        var portNameserver: Int32
 		var domain = [String]()
 		if name.hasSuffix(".") {
 			domain.append("")
@@ -130,10 +132,20 @@ public class Resolver {
 			if qname.hasSuffix(".") {
 				qname.removeLast()
 			}
+            
+            if nameserver.first!.contains(":") {
+                let components = nameserver.first!.split(separator: ":")
+                ipNameserver = String(components[0])
+                portNameserver = Int32(components[1])!
+            } else {
+                ipNameserver = nameserver.first!
+                portNameserver = 53
+            }
+            
 			do {
 				let request = try Message(type: .query, recursionDesired: true, questions: [ Question(name: "\(qname)", type: type) ]).serialize()
 				var answer: Message?
-				var sock: UniSocket? = try UniSocket(type: .udp, peer: nameserver.first!, port: 53, timeout: tmout)
+				var sock: UniSocket? = try UniSocket(type: .udp, peer: ipNameserver, port: portNameserver, timeout: tmout)
 				while let s = sock {
 					sock = nil
 					answer = nil
@@ -146,7 +158,7 @@ public class Resolver {
 					}
 					answer = try Message.init(deserialize: response)
 					if answer!.truncation {
-						sock = try UniSocket(type: .tcp, peer: nameserver.first!, port: 53, timeout: tmout)
+						sock = try UniSocket(type: .tcp, peer: nameserver.first!, port: portNameserver, timeout: tmout)
 					}
 				}
 				if let a = answer {
